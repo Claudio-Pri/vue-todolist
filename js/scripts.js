@@ -31,8 +31,10 @@ const app = createApp({
         };
     },
     methods: {
-        removeToDo() {
-            console.log('rimuovi todo');
+        removeToDo(i) {
+            // console.log('rimuovi todo');
+            this.todos.splice(i, 1);
+
         }
     }
 

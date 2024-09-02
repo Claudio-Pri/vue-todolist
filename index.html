@@ -23,9 +23,9 @@
 
         <h1>Todo in todos</h1>
         <ul>
-            <li v-for="todo in todos">
+            <li v-for="(todo, todosIndex) in todos">
                 {{todo.text}}
-                <button @click="removeToDo()">
+                <button @click="removeToDo(todosIndex)">
                     x
                 </button>
             </li>
