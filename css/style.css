@@ -6,5 +6,8 @@
     GENERAL
 */
 
+.done-todo {
+    text-decoration: line-through;
+}
 
 /* DEBUG */

@@ -22,14 +22,31 @@
     <div id="app">
 
         <h1>Todo in todos</h1>
+
+        <div>
+            <input v-model="newTodo.text" type="text">
+            <button @click="addTodo()">Aggiungi todo</button>
+        </div>
+        <h5>Nuovo todo: {{newTodo.text}}</h5>
+
         <ul>
-            <li v-for="(todo, todosIndex) in todos">
+            <li v-for="(todo, todosIndex) in todos" :class="{
+                'done-todo': todo.done == true
+            }" @click="handleClickTodo(todosIndex)">
                 {{todo.text}}
-                <button @click="removeToDo(todosIndex)">
+                <button @click.stop="removeToDo(todosIndex)">
                     x
+                </button>
+
+                <button @click.stop="todoDone(todosIndex)">
+                    &check;
                 </button>
             </li>
         </ul>
+
+        <button @click="todos = []">
+            Svuota todos
+        </button>
     </div>
 
 

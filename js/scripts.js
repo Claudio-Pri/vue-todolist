@@ -25,9 +25,13 @@ const app = createApp({
                 },
                 {
                     text: 'Lavare i piatti',
-                    done: false,
+                    done: true,
                 },
-            ]
+            ],
+            newTodo: {
+                text: '',
+                done: false,
+            },
         };
     },
     methods: {
@@ -35,9 +39,29 @@ const app = createApp({
             // console.log('rimuovi todo');
             this.todos.splice(i, 1);
 
+        },
+        addTodo() {
+            // this.todos.push(this.newTodo);
+            // this.newTodo.text = '';
+            // non funziona--chiedere / il problema è il push di un obj
+            this.todos.push({
+                // text: this.newTodo.text,
+                // done: this.newTodo.done,
+                ...this.newTodo
+            });
+            //qui svuoto new todo?
+
+        },
+        todoDone(i) {
+            this.todos[i].done = true;
+            console.log(this.todos[i].done);
+
+        },
+        handleClickTodo(i) {
+
+            this.todos[i].done = !this.todos[i].done;
+            console.log(this.todos[i].done);
         }
-    }
 
-
-
+    },
 }).mount('#app')
